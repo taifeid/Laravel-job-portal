@@ -1,7 +1,7 @@
 # Laravel-job-portal
 
 
-## idea of project:
+## Roles :
 * we have two users ( user seeking job - admin who manage)
 * user can apply job
 * user can follow up status of apply job
