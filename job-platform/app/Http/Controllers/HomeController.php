@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $user;
     /**
      * Create a new controller instance.
      *
@@ -22,7 +23,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+
+            $this->user = Auth::user();
+
+            return $next($request);
+        });
     }
 
     /**
@@ -100,11 +106,23 @@ class HomeController extends Controller
     }
     public function updateProfile(Request $request){
         $user_data = User::find($request->id);
-
+       if($user_data !=null){
         $user_data->name = $request->name;
         $user_data->email = $request->email;
         $user_data->password = Hash::make($request->password);
         $user_data->update();
         return redirect()->route('success');
+       }
+       else{
+        return redirect()->route('error');
+       }
+    }
+    public function notifications(){
+       
+        return view('notifications');
+    }
+    public function error(){
+       
+        return view('error');
     }
 };

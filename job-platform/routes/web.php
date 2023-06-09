@@ -44,6 +44,10 @@ Route::get('/success', [HomeController::class, 'success'])->name('success');
 Route::get('/userApplication', [HomeController::class, 'userApplication'])->name('userApplication');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::Post('/updateProfile', [HomeController::class, 'updateProfile'])->name('updateProfile');
+Route::get('/notifications', [HomeController::class, 'notifications'])->name('notifications');
+Route::get('/error', [HomeController::class, 'error'])->name('error');
+
+
 
 
 
